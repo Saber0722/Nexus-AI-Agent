@@ -187,7 +187,7 @@ class CodebaseIndexer:
         self.meta_path = INDEX_DIR / f"{index_name}.meta.pkl"
         self.mtime_path = INDEX_DIR / f"{index_name}.mtimes.json"
 
-        self.model = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True)
+        self.model = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True, device='cpu')
         self.embedding_dim = 768
 
         self.index: Optional[faiss.Index] = None

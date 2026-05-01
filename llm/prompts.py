@@ -42,12 +42,13 @@ Agent definitions — read carefully:
              "what does this function do", "find where X is defined"
 
 Key rules:
-- Any QUESTION (where/how/what/why/find/show/which/list) → always "rag_only", even if it mentions multiple files
-- Mentions error/traceback/exception/failing/broken → "debugger"
-- New feature or change touching auth, middleware, routes, schema, or multiple concerns → "planner"
-- Single self-contained function or method → "coder"
-- When unsure between coder and planner, ask: does this need changes in more than one file? Yes→planner, No→coder
-
+- ANY question starting with How/What/Where/Which/Why/Who → always "rag_only"
+- Mentions error/traceback/exception/failing/500/crash → "debugger"  
+- "Add X to Y" where Y is a specific file or function → "coder"
+- "Add X" that affects system behaviour, flow, or multiple concerns → "planner"
+- Refactor/rewrite/convert a specific function → "coder"
+- New feature touching middleware/auth/routes/config → "planner"
+                               
 Return ONLY valid JSON, no explanation, no markdown:
 {
   "agent": "<planner|coder|debugger|rag_only>",

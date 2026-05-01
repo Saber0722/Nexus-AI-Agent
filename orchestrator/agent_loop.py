@@ -97,8 +97,9 @@ class AgentLoop:
         Simple reflection: if coder produced code, try to execute it.
         Returns True if we should continue, False if we should stop.
         """
-        if not result.success:
-            return False  # stop — agent failed after retries
+        # In _reflect(), change the first line to:
+        if not result.success or "score:" in result.output:  # skip RAG retrieval output
+            return False if not result.success else True
 
         output = result.output
         # If output looks like Python code, validate it compiles

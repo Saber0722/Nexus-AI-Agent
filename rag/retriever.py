@@ -38,7 +38,7 @@ class CodebaseRetriever:
         self.index_path = INDEX_DIR / f"{index_name}.faiss"
         self.meta_path = INDEX_DIR / f"{index_name}.meta.pkl"
 
-        self.model = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True)
+        self.model = SentenceTransformer("nomic-ai/nomic-embed-text-v1.5", trust_remote_code=True, device='cpu')
         self.index = None
         self.chunks = []
         self._loaded = False

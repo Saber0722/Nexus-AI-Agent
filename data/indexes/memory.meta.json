@@ -1,0 +1,62 @@
+[
+  {
+    "record_id": 1,
+    "error_type": "AttributeError",
+    "ast_fingerprint": "a30b9d2f3c5d32cb",
+    "fix_worked": true
+  },
+  {
+    "record_id": 2,
+    "error_type": "KeyError",
+    "ast_fingerprint": "0793a64367534e24",
+    "fix_worked": true
+  },
+  {
+    "record_id": 3,
+    "error_type": "AttributeError",
+    "ast_fingerprint": "e0ee904af53860dc",
+    "fix_worked": false
+  },
+  {
+    "record_id": 4,
+    "error_type": "TypeError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 5,
+    "error_type": "TypeError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 6,
+    "error_type": "LogicError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 7,
+    "error_type": "ValueError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 8,
+    "error_type": "LogicError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 9,
+    "error_type": "None",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  },
+  {
+    "record_id": 10,
+    "error_type": "LogicError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
+  }
+]
