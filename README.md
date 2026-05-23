@@ -36,7 +36,7 @@ This constraint drives every architectural choice in the system.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    CLI (nexus command)                   │
+│                    CLI (nexus command)                  │
 │         run | ask | index | memory                      │
 └─────────────────────────┬───────────────────────────────┘
                           │
@@ -55,8 +55,8 @@ This constraint drives every architectural choice in the system.
        ▼                  ▼                    ▼
 ┌─────────────┐  ┌──────────────────────────────────────┐
 │   Router    │  │           Agent Dispatch             │
-│ Qwen 1.5B  │  │  Planner | Coder | Debugger | RAG    │
-│  ~300ms    │  │         Qwen 7B executor              │
+│ Qwen 1.5B   │  │  Planner | Coder | Debugger | RAG    │
+│  ~300ms     │  │         Qwen 7B executor             │
 └─────────────┘  └──────────────────────────────────────┘
                           │
               ┌───────────┴────────────┐
@@ -524,13 +524,3 @@ This is a personal research project but contributions are welcome. The most usef
 ## License
 
 MIT License. Use it, fork it, build on it.
-
----
-
-<div align="center">
-
-Built by a dual degree student at **Woxsen University + IIT Madras**
-
-*Not because there wasn't a tool that already did this — but because understanding every line of it matters more.*
-
-</div>
