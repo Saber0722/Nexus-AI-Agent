@@ -8,7 +8,6 @@ import re
 
 
 def _extract_code(text: str) -> str:
-    """Strip markdown fences if present."""
     match = re.search(r"```(?:\w+)?\n(.*?)```", text, re.DOTALL)
     return match.group(1).strip() if match else text.strip()
 
@@ -22,7 +21,10 @@ def run(
     client = get_client()
     context = ""
     if retriever:
-        context = retriever.retrieve_for_prompt(task, top_k=5)
+        try:
+            context = retriever.retrieve_for_prompt(task, top_k=5)
+        except FileNotFoundError:
+            context = ""
 
     messages = CODER_PROMPT.build(context=context, user=task)
     files_modified = []

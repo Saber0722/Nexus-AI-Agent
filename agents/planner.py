@@ -8,7 +8,10 @@ def run(task: str, tier: ModelTier = ModelTier.QUALITY, retriever: CodebaseRetri
     client = get_client()
     context = ""
     if retriever:
-        context = retriever.retrieve_for_prompt(task, top_k=5)
+        try:
+            context = retriever.retrieve_for_prompt(task, top_k=5)
+        except FileNotFoundError:
+            context = ""
 
     messages = PLANNER_PROMPT.build(context=context, user=task)
 
@@ -16,7 +19,7 @@ def run(task: str, tier: ModelTier = ModelTier.QUALITY, retriever: CodebaseRetri
         plan = client.chat_json(messages, tier=tier, temperature=0.2)
         steps = plan.get("steps", [])
         formatted = "\n".join(
-            f"  {s['step_number']}. [{s['action_type']}] {s['description']}"
+            f"  {s['step_number']}.  {s['description']}"
             + (f" → {s['target_file']}" if s.get('target_file') else "")
             for s in steps
         )

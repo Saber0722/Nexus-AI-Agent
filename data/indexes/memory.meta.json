@@ -58,5 +58,11 @@
     "error_type": "LogicError",
     "ast_fingerprint": "e55f75a29310d7b6",
     "fix_worked": true
+  },
+  {
+    "record_id": 11,
+    "error_type": "AttributeError",
+    "ast_fingerprint": "e55f75a29310d7b6",
+    "fix_worked": true
   }
 ]

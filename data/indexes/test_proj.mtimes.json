@@ -3,5 +3,9 @@
   "/home/saber/GitHub/test_proj/main.py": 1777640558.4229681,
   "/home/saber/GitHub/test_proj/text_to_embeddings.py": 1777641149.1602035,
   "/home/saber/GitHub/test_proj/torch_binary_classification_cnn_block.py": 1777641281.0143197,
-  "/home/saber/GitHub/test_proj/my_cnn_block.py": 1777641413.0892706
+  "/home/saber/GitHub/test_proj/my_cnn_block.py": 1777641413.0892706,
+  "/home/saber/GitHub/test_proj/cat_vs_dog_cnn.py": 1779459332.422999,
+  "/home/saber/GitHub/test_proj/cnn_cat_dog_detection.py": 1779460190.8479228,
+  "/home/saber/GitHub/test_proj/transformer_to_french.py": 1779461460.7568,
+  "/home/saber/GitHub/test_proj/repo_docs.py": 1779462673.95372
 }
