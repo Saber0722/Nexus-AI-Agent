@@ -64,7 +64,7 @@ class AgentLoop:
             duration_ms=duration_ms,
         )
         self.steps.append(log)
-        self.files_modified.extend(result.files_modified)
+        self.files_modified.extend([f for f in result.files_modified if f not in self.files_modified])
         status = "[green]✓[/green]" if result.success else "[red]✗[/red]"
         console.print(f"  {status} Step {step_n} [{agent}] {task[:60]}… ({duration_ms}ms)")
         if not result.success:
@@ -124,7 +124,8 @@ class AgentLoop:
             target_path.parent.mkdir(parents=True, exist_ok=True)
             target_path.write_text(code)
             console.print(f"  [green]Written:[/green] {target_path}")
-            self.files_modified.append(str(target_path))
+            if str(target_path) not in self.files_modified:
+                self.files_modified.append(str(target_path))
 
     def run(self, task: str) -> LoopResult:
         start = time.time()
