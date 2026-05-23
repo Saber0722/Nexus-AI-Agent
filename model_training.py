@@ -1,16 +1,16 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 
-# Load your dataset
-df = pd.read_csv('path/to/your/dataset.csv')
+def initialize_random_forest_classifier(n_estimators=100, max_depth=None, random_state=42):
+    """
+    Initialize a Random Forest classifier with specified parameters.
 
-# Separate features and target variable
-X = df.drop(columns=['target_column'])
-y = df['target_column']
+    Parameters:
+        n_estimators (int): The number of trees in the forest.
+        max_depth (int or None): The maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples.
+        random_state (int): Controls both the randomness of the bootstrapping of the samples used when building trees (if `bootstrap=True`) and the randomness of the splits made during the tree induction.
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Verify the split
-print(f"Training set features shape: {X_train.shape}")
-print(f"Testing set features shape: {X_test.shape}")
+    Returns:
+        RandomForestClassifier: An initialized Random Forest classifier instance.
+    """
+    classifier = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, random_state=random_state)
+    return classifier
