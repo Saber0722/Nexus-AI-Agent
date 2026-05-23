@@ -191,7 +191,7 @@ class AgentLoop:
 
                 # Force shell commands to terminal
                 # Skip vague "run/test" steps — not actionable
-                if any(desc.strip().lower().startswith(w) for w in ("run ", "test ", "start ", "launch ")):
+                if any(desc.strip().lower().startswith(w) for w in ("run ", "test ", "start ", "launch ", "install ", "load ", "import the", "use the")):
                     console.print(f"  [dim]Skipping non-actionable step: {desc[:50]}[/dim]")
                     continue
 
