@@ -183,7 +183,11 @@ class AgentLoop:
                 if not desc:
                     continue
 
+                # Force sub-steps: never re-plan, always code or terminal
                 sub_decision = route(desc, mode=self.mode)
+                if sub_decision.agent == "planner":
+                    from dataclasses import replace
+                    sub_decision = replace(sub_decision, agent="coder")
 
                 # Force shell commands to terminal
                 if action == "shell_command":
@@ -204,10 +208,10 @@ class AgentLoop:
                 # Auto-write if target file specified in plan
                 if sub_result.success and target:
                     from agents.coder import _extract_code
-                    code = _extract_code(sub_result.output)
-                    # Sanitize: strip nested paths, keep filename only
                     import os
-                    flat_target = os.path.basename(target.lstrip("./"))
+                    code = _extract_code(sub_result.output)
+                    # Sanitize: keep only the filename, no nested dirs
+                    flat_target = os.path.basename(target.strip("./"))
                     self._write_step_output(code, flat_target, desc)
 
                 self._reflect(sub_result)

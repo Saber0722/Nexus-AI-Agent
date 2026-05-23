@@ -6,8 +6,14 @@ from config import BASE_DIR
 
 def _guard(path: Path) -> Path:
     """Prevent writes outside the project directory."""
+    import os
     resolved = path.resolve()
-    if not str(resolved).startswith(str(BASE_DIR.resolve())):
+    # Allow writes inside nexus OR inside the caller's project
+    allowed_roots = [str(BASE_DIR.resolve())]
+    caller = os.environ.get("NEXUS_CWD")
+    if caller:
+        allowed_roots.append(str(Path(caller).resolve()))
+    if not any(str(resolved).startswith(r) for r in allowed_roots):
         raise PermissionError(f"Access denied outside project: {resolved}")
     return resolved
 
