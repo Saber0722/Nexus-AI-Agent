@@ -205,7 +205,10 @@ class AgentLoop:
                 if sub_result.success and target:
                     from agents.coder import _extract_code
                     code = _extract_code(sub_result.output)
-                    self._write_step_output(code, target, desc)
+                    # Sanitize: strip nested paths, keep filename only
+                    import os
+                    flat_target = os.path.basename(target.lstrip("./"))
+                    self._write_step_output(code, flat_target, desc)
 
                 self._reflect(sub_result)
 
