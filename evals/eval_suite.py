@@ -10,7 +10,7 @@ from rag.indexer import CodebaseIndexer
 
 console = Console()
 
-# ── Eval tasks ────────────────────────────────────────────────────────────────
+# Eval tasks
 TASKS = [
     # Bug fix
     {"id": "bf01", "category": "bug_fix",   "expected_agent": "debugger",

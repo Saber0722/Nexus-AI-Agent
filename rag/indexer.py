@@ -43,8 +43,7 @@ def _make_chunk_id(file_path: str, start_line: int, name: str) -> str:
     return hashlib.md5(raw.encode()).hexdigest()[:12]
 
 
-# ── Python AST chunker ────────────────────────────────────────────────────────
-
+# Python AST chunker 
 def _extract_python_chunks(file_path: Path, source: str, mtime: float) -> list[Chunk]:
     chunks = []
     try:
@@ -122,7 +121,7 @@ def _extract_python_chunks(file_path: Path, source: str, mtime: float) -> list[C
     return chunks
 
 
-# ── Generic sliding window chunker ───────────────────────────────────────────
+# Generic sliding window chunker 
 
 def _extract_block_chunks(file_path: Path, content: str, language: str, mtime: float) -> list[Chunk]:
     chunks = []
@@ -154,7 +153,7 @@ def _extract_block_chunks(file_path: Path, content: str, language: str, mtime: f
     return chunks
 
 
-# ── File dispatcher ───────────────────────────────────────────────────────────
+# File dispatcher 
 
 def chunk_file(file_path: Path) -> list[Chunk]:
     mtime = file_path.stat().st_mtime
@@ -178,7 +177,7 @@ def chunk_file(file_path: Path) -> list[Chunk]:
         return _extract_block_chunks(file_path, source, "text", mtime)
 
 
-# ── Index builder ─────────────────────────────────────────────────────────────
+# Index builder 
 
 class CodebaseIndexer:
     def __init__(self, index_name: str = "default"):

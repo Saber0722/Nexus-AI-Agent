@@ -5,7 +5,7 @@ from memory.memory_store import FailureMemory, FailureRecord, _ast_fingerprint
 console = Console()
 memory = FailureMemory()
 
-# ── Store 3 failure records ───────────────────────────────────────────────────
+# Store 3 failure records 
 errors = [
     FailureRecord(
         error_type="AttributeError",
@@ -40,7 +40,7 @@ errors = [
 for e in errors:
     memory.store(e)
 
-# ── Retrieval tests ───────────────────────────────────────────────────────────
+# Retrieval tests 
 queries = [
     ("'NoneType' has no attribute 'search'",
      "self.index.search(emb, k)",
@@ -78,6 +78,6 @@ for query, code, note in queries:
 
 console.print(table)
 
-# ── Stats ─────────────────────────────────────────────────────────────────────
+# Stats 
 stats = memory.stats()
 console.print(f"\nMemory stats: {stats}")

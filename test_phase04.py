@@ -9,7 +9,7 @@ import agents.debugger as debugger
 console = Console()
 retriever = CodebaseRetriever(index_name="nexus_test")
 
-# ── Planner ───────────────────────────────────────────────────────────────────
+# Planner 
 console.rule("[cyan]Planner Agent[/cyan]")
 result = planner.run(
     task="Add a function to retriever.py that returns the top-5 most common file types in the index",
@@ -17,7 +17,7 @@ result = planner.run(
 )
 console.print(Panel(result.output or result.error, title=f"Planner — success:{result.success}"))
 
-# ── Coder ─────────────────────────────────────────────────────────────────────
+# Coder 
 console.rule("[cyan]Coder Agent[/cyan]")
 result = coder.run(
     task="Write a standalone Python function called `chunk_stats(chunks)` that takes a list of Chunk objects and returns a dict with keys: total, by_language, by_type",
@@ -25,8 +25,7 @@ result = coder.run(
 )
 console.print(Panel(result.output[:800] or result.error, title=f"Coder — success:{result.success}"))
 
-# ── Debugger ──────────────────────────────────────────────────────────────────
-console.rule("[cyan]Debugger Agent[/cyan]")
+# Debugger console.rule("[cyan]Debugger Agent[/cyan]")
 result = debugger.run(
     error="AttributeError: 'NoneType' object has no attribute 'search'",
     traceback="File 'rag/retriever.py', line 48, in retrieve\n    scores, indices = self.index.search(embedding, fetch_k)\nAttributeError: 'NoneType' object has no attribute 'search'",

@@ -17,7 +17,7 @@ class PromptTemplate:
         ]
 
 
-# ── Router ────────────────────────────────────────────────────────────────────
+# Router
 
 ROUTER_PROMPT = PromptTemplate(system="""
 You are a task router for a coding agent system. Classify the task into exactly 
@@ -59,7 +59,7 @@ Return ONLY valid JSON, no explanation, no markdown:
 """)
 
 
-# ── Planner ───────────────────────────────────────────────────────────────────
+# Planner
 
 PLANNER_PROMPT = PromptTemplate(system="""
 You are a senior software engineer planning how to implement a coding task.
@@ -89,7 +89,7 @@ Return ONLY valid JSON:
 """)
 
 
-# ── Coder ─────────────────────────────────────────────────────────────────────
+# Coder
 
 CODER_PROMPT = PromptTemplate(system="""
 You are an expert software engineer writing production-quality code.
@@ -106,7 +106,7 @@ Rules:
 """)
 
 
-# ── Debugger ──────────────────────────────────────────────────────────────────
+# Debugger
 
 DEBUGGER_PROMPT = PromptTemplate(system="""
 You are an expert debugger. You receive an error, its traceback, and the relevant 
@@ -126,7 +126,7 @@ Return ONLY valid JSON:
 """)
 
 
-# ── RAG-only (Q&A) ────────────────────────────────────────────────────────────
+# RAG-only (Q&A)
 
 RAG_PROMPT = PromptTemplate(system="""
 You are a code assistant answering questions about a specific codebase.

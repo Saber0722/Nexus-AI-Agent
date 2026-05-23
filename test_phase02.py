@@ -11,7 +11,7 @@ console = Console()
 
 client = get_client()
 
-# ── Test 1: Basic chat (non-streaming) ───────────────────────────────────────
+# Test 1: Basic chat (non-streaming) 
 console.rule("[bold cyan]Test 1: Basic Chat[/bold cyan]")
 
 response = client.chat(
@@ -25,8 +25,7 @@ console.print(Panel(
     title="1.5B Response"
 ))
 
-# ── Test 2: Streaming ────────────────────────────────────────────────────────
-console.rule("[bold cyan]Test 2: Streaming[/bold cyan]")
+# Test 2: Streaming console.rule("[bold cyan]Test 2: Streaming[/bold cyan]")
 console.print("[dim]Streaming from 1.5B:[/dim] ", end="")
 
 tokens_received = 0
@@ -39,7 +38,7 @@ for token in client.stream(
 print()
 console.print(f"[dim]({tokens_received} chunks received)[/dim]")
 
-# ── Test 3: JSON structured output ───────────────────────────────────────────
+# Test 3: JSON structured output 
 console.rule("[bold cyan]Test 3: JSON Mode[/bold cyan]")
 
 result = client.chat_json(
@@ -53,7 +52,7 @@ rprint(result)
 assert isinstance(result, dict), "JSON mode should return a dict"
 console.print("[green]JSON mode: PASS[/green]")
 
-# ── Test 4: Router decisions ─────────────────────────────────────────────────
+# Test 4: Router decisions 
 console.rule("[bold cyan]Test 4: Router[/bold cyan]")
 
 test_tasks = [
@@ -84,8 +83,7 @@ for task, expected in test_tasks:
 
 console.print(table)
 
-# ── Test 5: Model tier speed comparison ──────────────────────────────────────
-console.rule("[bold cyan]Test 5: Speed — 1.5B vs 7B[/bold cyan]")
+# Test 5: Model tier speed comparison console.rule("[bold cyan]Test 5: Speed — 1.5B vs 7B[/bold cyan]")
 
 prompt = [Message(role="user", content="Write a Python function to binary search a sorted list.")]
 

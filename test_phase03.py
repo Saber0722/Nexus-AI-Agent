@@ -16,8 +16,7 @@ def check(name, result, expect_success=True):
     results.append((name, ok, result.error or result.output[:60]))
     return result
 
-# ── File tools ────────────────────────────────────────────────────────────────
-r = check("write_file", write_file("data/test_output.txt", "hello from nexus\n"))
+# File tools r = check("write_file", write_file("data/test_output.txt", "hello from nexus\n"))
 r = check("read_file",  read_file("data/test_output.txt"))
 assert "hello" in r.output
 
@@ -27,15 +26,14 @@ assert "EDITED" in r.output
 
 r = check("list_files", list_files("tools"))
 
-# ── Security guard ────────────────────────────────────────────────────────────
-r = check("path traversal blocked", write_file("/tmp/evil.txt", "bad"), expect_success=False)
+# Security guard r = check("path traversal blocked", write_file("/tmp/evil.txt", "bad"), expect_success=False)
 
-# ── Terminal tool ─────────────────────────────────────────────────────────────
+# Terminal tool 
 r = check("run echo",      run_command("echo 'nexus works'"))
 r = check("run python -V", run_command("python --version"))
 r = check("blocked rm",    run_command("sudo ls"), expect_success=False)
 
-# ── Python exec ───────────────────────────────────────────────────────────────
+# Python exec 
 r = check("exec print",    execute_python("print(2 + 2)"))
 assert r.output == "4"
 
@@ -48,11 +46,11 @@ print(sum(xs))
 """))
 assert r.output == "10"
 
-# ── Git tools ─────────────────────────────────────────────────────────────────
+# Git tools 
 r = check("git_status",     git_status())
 r = check("git_checkpoint", git_checkpoint("phase03-test"))
 
-# ── Results table ─────────────────────────────────────────────────────────────
+# Results table 
 table = Table(title="Phase 03 — Tool Layer")
 table.add_column("Test")
 table.add_column("Status")

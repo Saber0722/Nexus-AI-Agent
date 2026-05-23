@@ -61,7 +61,7 @@ class FailureMemory:
         self._init_db()
         self._load_index()
 
-    # ── SQLite (persistent storage) ───────────────────────────────────────────
+    # SQLite (persistent storage) 
 
     def _init_db(self):
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
@@ -111,8 +111,7 @@ class FailureMemory:
         conn.commit()
         conn.close()
 
-    # ── FAISS (semantic retrieval) ────────────────────────────────────────────
-
+    # FAISS (semantic retrieval) 
     def _load_index(self):
         if MEMORY_INDEX.exists() and MEMORY_META.exists():
             self.index = faiss.read_index(str(MEMORY_INDEX))
@@ -166,7 +165,7 @@ class FailureMemory:
         })
         self._save_index()
 
-    # ── Retrieval ─────────────────────────────────────────────────────────────
+    # Retrieval 
 
     def retrieve(
         self,

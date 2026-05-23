@@ -57,7 +57,7 @@ class OllamaClient:
     def _model_for_tier(self, tier: ModelTier) -> str:
         return ROUTER_MODEL if tier == ModelTier.FAST else EXECUTOR_MODEL
 
-    # ── Non-streaming call ────────────────────────────────────────────────────
+    #  Non-streaming call 
 
     def chat(
         self,
@@ -107,7 +107,7 @@ class OllamaClient:
             response_tokens=data.get("eval_count", 0),
         )
 
-    # ── Streaming call ────────────────────────────────────────────────────────
+    #  Streaming call 
 
     def stream(
         self,
@@ -154,7 +154,7 @@ class OllamaClient:
         except Exception as e:
             raise RuntimeError(f"Streaming failed: {e}")
 
-    # ── JSON structured output ────────────────────────────────────────────────
+    #  JSON structured output 
 
     def chat_json(
         self,
