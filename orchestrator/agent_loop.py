@@ -190,6 +190,11 @@ class AgentLoop:
                     sub_decision = replace(sub_decision, agent="coder")
 
                 # Force shell commands to terminal
+                # Skip vague "run/test" steps — not actionable
+                if any(desc.strip().lower().startswith(w) for w in ("run ", "test ", "start ", "launch ")):
+                    console.print(f"  [dim]Skipping non-actionable step: {desc[:50]}[/dim]")
+                    continue
+
                 if action == "shell_command":
                     t0 = time.time()
                     cmd_result = run_command(desc)
